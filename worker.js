@@ -47,7 +47,7 @@ const worker = new Worker('KHONKAEN', async job => {
   },
   concurrency: 4, connection: redisConfiguration.connection,
   defaultJobOptions: {
-    attempts: 5,
+    attempts: 3,
     backoff: {
       type: 'exponential',
       delay: 3000,
@@ -55,11 +55,22 @@ const worker = new Worker('KHONKAEN', async job => {
   }
 });
 
-worker.on('completed', job => {
+// Job success
+worker.on('completed', (job, returnValue) => {
   console.info(`${job.id} has completed!`);
+  console.info(`${returnValue} is returned value.`)
+  // 1. add to metadata queue
+  // 2. add to notify queue
 });
 
+// Job failed
 worker.on('failed', (job, err) => {
   console.error(`${job.id} has failed with ${err.message}`);
+  // add to error queue
+});
+
+// Worker error
+worker.on('error', err => {
+  console.error(err);
 });
 
