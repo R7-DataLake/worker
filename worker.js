@@ -1,9 +1,6 @@
 
 const { PostgrestClient } = require('@supabase/postgrest-js');
-const path = require('path');
 const { Worker } = require('bullmq');
-
-require('dotenv').config({ path: path.join(__dirname, './config.conf') })
 
 const model = require('./model');
 
