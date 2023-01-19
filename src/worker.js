@@ -1,8 +1,7 @@
 
 const { PostgrestClient } = require('@supabase/postgrest-js');
 const { Worker } = require('bullmq');
-
-const model = require('./model');
+const processor = require('./processor');
 
 const redisConfiguration = {
   connection: {
@@ -24,16 +23,56 @@ const postgrest = new PostgrestClient(REST_URL, {
   },
 });
 
-async function importPerson(jobs) {
-  const data = jobs.data;
-  await model.doImportPerson(postgrest, data);
-  return jobs.id;
-}
+const QUEUE_NAME = process.env.QUEUE_NAME || 'R7QUEUE'
 
-const worker = new Worker('KHONKAEN', async job => {
+const worker = new Worker(QUEUE_NAME, async job => {
   switch (job.name) {
     case 'PERSON': {
-      await importPerson(job);
+      await processor.importPerson(postgrest, job);
+      break;
+    }
+    case 'OPD': {
+      await processor.importOpd(postgrest, job);
+      break;
+    }
+    case 'CHRONIC': {
+      await processor.importChronic(postgrest, job);
+      break;
+    }
+    case 'OPDX': {
+      await processor.importOpdx(postgrest, job);
+      break;
+    }
+    case 'OPOP': {
+      await processor.importOpop(postgrest, job);
+      break;
+    }
+    case 'APPOINT': {
+      await processor.importAppoint(postgrest, job);
+      break;
+    }
+    case 'DRUG': {
+      await processor.importDrug(postgrest, job);
+      break;
+    }
+    case 'DRUGALLERGY': {
+      await processor.importDrugallergy(postgrest, job);
+      break;
+    }
+    case 'IPD': {
+      await processor.importIpd(postgrest, job);
+      break;
+    }
+    case 'IPDX': {
+      await processor.importIpdx(postgrest, job);
+      break;
+    }
+    case 'IPOP': {
+      await processor.importIpop(postgrest, job);
+      break;
+    }
+    case 'LAB': {
+      await processor.importLab(postgrest, job);
       break;
     }
   }

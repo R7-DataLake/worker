@@ -3,16 +3,13 @@
   "version": "1.0.0",
   "description": "",
   "scripts": {
-    "build": "npx gulp",
     "start": "npx nodemon"
   },
   "keywords": [],
   "author": "",
-  "license": "ISC",
+  "license": "GPLv3",
   "dependencies": {
     "@supabase/postgrest-js": "^1.1.1",
-    "@supabase/supabase-js": "^2.4.0",
-    "bullmq": "^3.5.5",
-    "chalk": "^5.2.0"
+    "bullmq": "^3.5.5"
   }
 }
