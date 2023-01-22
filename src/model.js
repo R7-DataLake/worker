@@ -1,4 +1,4 @@
-// Person module
+
 module.exports = {
 
   doImportPerson: async (postgrest, data) => {
