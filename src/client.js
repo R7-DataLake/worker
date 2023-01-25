@@ -19,7 +19,7 @@ const credentials = grpc.credentials.createSsl(
 );
 
 const ingress = grpc.loadPackageDefinition(packageDefinition).ingress
-const grpcServer = process.env.GRPC_SERVER || "localhost:50051"
+const grpcServer = process.env.R7_WORKER_GRPC_SERVER || "localhost:50051"
 
 const client = new ingress.IngressService(grpcServer, credentials)
 // const client = new ingress.IngressService(grpc_server, grpc.credentials.createInsecure())

@@ -4,16 +4,16 @@ const processor = require('./processor');
 
 const redisConfiguration = {
   connection: {
-    host: process.env.REDIS_HOST || "localhost",
-    port: Number(process.env.REDIS_PORT) || 6379,
+    host: process.env.R7_WORKER_REDIS_HOST || "localhost",
+    port: Number(process.env.R7_WORKER_REDIS_PORT) || 6379,
     enableOfflineQueue: false,
-    password: process.env.REDIS_PASSWORD || "redispw"
+    password: process.env.R7_WORKER_REDIS_PASSWORD || "redispw"
   }
 }
 
-const QUEUE_NAME = process.env.QUEUE_NAME || 'R7QUEUE'
+const ZONE = process.env.R7_WORKER_ZONE || 'R7QUEUE'
 
-const worker = new Worker(QUEUE_NAME, async job => {
+const worker = new Worker(ZONE, async job => {
   switch (job.name) {
     case 'PERSON': {
       await processor.importPerson(job);
