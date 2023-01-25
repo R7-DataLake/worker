@@ -9,7 +9,9 @@
   "author": "",
   "license": "GPLv3",
   "dependencies": {
-    "@supabase/postgrest-js": "^1.1.1",
-    "bullmq": "^3.5.5"
+    "@grpc/grpc-js": "^1.8.5",
+    "@grpc/proto-loader": "^0.7.4",
+    "bullmq": "^3.5.5",
+    "dotenv": "^16.0.3"
   }
 }

@@ -1,0 +1,249 @@
+syntax = "proto3";
+
+import "google/protobuf/empty.proto";
+
+package ingress;
+
+service IngressService {
+  rpc SavePerson (PersonRequest) returns (google.protobuf.Empty) {}
+  rpc SaveOpd (OpdRequest) returns (google.protobuf.Empty) {}
+  rpc SaveChronic (ChronicRequest) returns (google.protobuf.Empty) {}
+  rpc SaveOpdx (OpdxRequest) returns (google.protobuf.Empty) {}
+  rpc SaveOpop (OpopRequest) returns (google.protobuf.Empty) {}
+  rpc SaveIpd (IpdRequest) returns (google.protobuf.Empty) {}
+  rpc SaveIpdx (IpdxRequest) returns (google.protobuf.Empty) {}
+  rpc SaveIpop (IpopRequest) returns (google.protobuf.Empty) {}
+  rpc SaveDrug (DrugRequest) returns (google.protobuf.Empty) {}
+  rpc SaveLab (LabRequest) returns (google.protobuf.Empty) {}
+  rpc SaveAppoint (AppointRequest) returns (google.protobuf.Empty) {}
+  rpc SaveDrugallergy (DrugallergyRequest) returns (google.protobuf.Empty) {}
+}
+
+message PersonRequest {
+
+  message Data {
+    string hospcode = 1;
+    string hn = 2;
+    string cid = 3;
+    string title = 4;
+    string fname = 5;
+    string lname = 6;
+    string birth = 7;
+    string sex = 8;
+    string marriage = 9;
+    string occupation = 10;
+    string nation = 11;
+    string idtype = 12;
+    string changwat = 13;
+    string amphur = 14;
+    string tambol = 15;
+    string moo = 16;
+    string typearea = 17;
+    string dUpdate = 18;
+  }
+
+  repeated Data data = 2;
+}
+
+message OpdRequest {
+
+  message Data {
+    string hospcode = 1;
+    string hn = 2;
+    string clinic = 3;
+    string dateServ = 4;
+    string timeServ = 5;
+    string seq = 6;
+    string chiefcomp = 7;
+    uint32 btemp = 8;
+    uint32 sbp = 9;
+    uint32 dbp = 10;
+    uint32 pr = 11;
+    uint32 rr = 12;
+    string typein = 13;
+    string typeout = 14;
+    string insType = 15;
+    string insNumber = 16;
+    string InsHospmain = 17;
+    string InsHospsub = 18;
+    string diagText = 19;
+    string dUpdate = 20;
+  }
+
+  repeated Data data = 2;
+}
+
+message ChronicRequest {
+
+  message Data {
+    string hospcode = 1;
+    string hn = 2;
+    string dateDiag = 3;
+    string chronic = 4;
+    string hospDx = 5;
+    string hospRx = 6;
+    string dateDisch = 7;
+    string dUpdate = 8;
+  }
+
+  repeated Data data = 2;
+}
+
+message OpdxRequest {
+
+  message Data {
+    string hospcode = 1;
+    string hn = 2;
+    string seq = 3;
+    string datedx = 4;
+    string diag = 5;
+    string dxtype = 6;
+    string provider = 7;
+    string dUpdate = 8;
+  }
+
+  repeated Data data = 2;
+}
+
+message OpopRequest {
+
+  message Data {
+    string hospcode = 1;
+    string hn = 2;
+    string seq = 3;
+    string dateop = 4;
+    string oper = 5;
+    string provider = 6;
+    float servprice = 7;
+    string dUpdate = 8;
+  }
+
+  repeated Data data = 2;
+}
+
+message IpdRequest {
+
+  message Data {
+    string hospcode = 1;
+    string hn = 2;
+    string an = 3;
+    string dateadm = 4;
+    string timeadm = 5;
+    string datedsc = 6;
+    string timedsc = 7;
+    string dischs = 8;
+    string discht = 9;
+    string dept = 10;
+    string warddsc = 11;
+    string admW = 12;
+    string dUpdate = 13;
+  }
+
+  repeated Data data = 2;
+}
+
+message IpdxRequest {
+
+  message Data {
+    string hospcode = 1;
+    string hn = 2;
+    string an = 3;
+    string diag = 4;
+    string dxtype = 5;
+    string provider = 6;
+    string dUpdate = 7;
+  }
+
+  repeated Data data = 2;
+}
+
+message IpopRequest {
+
+  message Data {
+    string hospcode = 1;
+    string hn = 2;
+    string an = 3;
+    string oper = 4;
+    string optype = 5;
+    string provider = 6;
+    string datein = 7;
+    string timein = 8;
+    string dateout = 9;
+    string timeout = 10;
+    string dUpdate = 11;
+  }
+
+  repeated Data data = 2;
+}
+
+message DrugRequest {
+
+  message Data {
+    string hospcode = 1;
+    string hn = 2;
+    string an = 3;
+    string seq = 4;
+    string did = 5;
+    uint32 amount = 6;
+    float drugprice = 7;
+    float drugcost = 8;
+    string unit = 9;
+    string unitPack = 10;
+    string sigcode = 11;
+    string provider = 12;
+    string dUpdate = 13;
+  }
+
+  repeated Data data = 2;
+}
+
+message LabRequest {
+
+  message Data {
+    string hospcode = 1;
+    string hn = 2;
+    string seq = 3;
+    string an = 4;
+    string labtest = 5;
+    string labresult = 9;
+    string dUpdate = 10;
+  }
+
+  repeated Data data = 2;
+}
+
+message AppointRequest {
+
+  message Data {
+    string hospcode = 1;
+    string hn = 2;
+    string seq = 3;
+    string an = 4;
+    string appointDate = 5;
+    string appointTime = 6;
+    string clinic = 7;
+    string remark = 8;
+    string dUpdate = 9;
+  }
+
+  repeated Data data = 2;
+}
+
+message DrugallergyRequest {
+
+  message Data {
+    string hospcode = 1;
+    string hn = 2;
+    string daterecord = 3;
+    string dname = 4;
+    string typedx = 5;
+    string alevel = 6;
+    string symptom = 7;
+    string informant = 8;
+    string informhosp = 9;
+    string provider = 10;
+    string dUpdate = 11;
+  }
+
+  repeated Data data = 2;
+}

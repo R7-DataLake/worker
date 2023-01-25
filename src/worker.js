@@ -1,5 +1,4 @@
 
-const { PostgrestClient } = require('@supabase/postgrest-js');
 const { Worker } = require('bullmq');
 const processor = require('./processor');
 
@@ -12,66 +11,56 @@ const redisConfiguration = {
   }
 }
 
-const REST_URL = process.env.REST_URL || 'http://localhost:3000';
-const API_KEY = process.env.API_KEY || ''
-
-const postgrest = new PostgrestClient(REST_URL, {
-  headers: {
-    Prefer: 'tx=rollback',
-    Authorization: 'Bearer ' + API_KEY
-  },
-});
-
 const QUEUE_NAME = process.env.QUEUE_NAME || 'R7QUEUE'
 
 const worker = new Worker(QUEUE_NAME, async job => {
   switch (job.name) {
     case 'PERSON': {
-      await processor.importPerson(postgrest, job);
+      await processor.importPerson(job);
       break;
     }
     case 'OPD': {
-      await processor.importOpd(postgrest, job);
+      await processor.importOpd(job);
       break;
     }
     case 'CHRONIC': {
-      await processor.importChronic(postgrest, job);
+      await processor.importChronic(job);
       break;
     }
     case 'OPDX': {
-      await processor.importOpdx(postgrest, job);
+      await processor.importOpdx(job);
       break;
     }
     case 'OPOP': {
-      await processor.importOpop(postgrest, job);
+      await processor.importOpop(job);
       break;
     }
     case 'APPOINT': {
-      await processor.importAppoint(postgrest, job);
+      await processor.importAppoint(job);
       break;
     }
     case 'DRUG': {
-      await processor.importDrug(postgrest, job);
+      await processor.importDrug(job);
       break;
     }
     case 'DRUGALLERGY': {
-      await processor.importDrugallergy(postgrest, job);
+      await processor.importDrugallergy(job);
       break;
     }
     case 'IPD': {
-      await processor.importIpd(postgrest, job);
+      await processor.importIpd(job);
       break;
     }
     case 'IPDX': {
-      await processor.importIpdx(postgrest, job);
+      await processor.importIpdx(job);
       break;
     }
     case 'IPOP': {
-      await processor.importIpop(postgrest, job);
+      await processor.importIpop(job);
       break;
     }
     case 'LAB': {
-      await processor.importLab(postgrest, job);
+      await processor.importLab(job);
       break;
     }
   }

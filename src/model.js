@@ -1,76 +1,149 @@
+const client = require("./client");
 
 module.exports = {
 
-  doImportPerson: async (postgrest, data) => {
-    return postgrest
-      .from('person')
-      .upsert(data, { onConflict: 'hospcode,hn' });
+  doImportPerson: async (data) => {
+    return new Promise((resolve, reject) => {
+      client.savePerson(data, (err, response) => {
+        if (err) {
+          reject(err);
+        } else {
+          resolve(response);
+        }
+      })
+    })
   },
 
-  doImportOpd: async (postgrest, data) => {
-    return postgrest
-      .from('opd')
-      .upsert(data, { onConflict: 'hospcode,hn,vn,date_serv' });
+  doImportOpd: async (data) => {
+    return new Promise((resolve, reject) => {
+      client.saveOpd(data, (err, response) => {
+        if (err) {
+          reject(err);
+        } else {
+          resolve(response);
+        }
+      })
+    })
   },
 
-  doImportChronic: async (postgrest, data) => {
-    return postgrest
-      .from('chronic')
-      .upsert(data, { onConflict: 'hospcode,hn,chronic' });
+  doImportChronic: async (data) => {
+    return new Promise((resolve, reject) => {
+      client.saveChronic(data, (err, response) => {
+        if (err) {
+          reject(err);
+        } else {
+          resolve(response);
+        }
+      })
+    })
   },
 
-  doImportOpdx: async (postgrest, data) => {
-    return postgrest
-      .from('opdx')
-      .upsert(data, { onConflict: 'hospcode,hn,seq,diag,dxtype' });
+  doImportOpdx: async (data) => {
+    return new Promise((resolve, reject) => {
+      client.saveOpdx(data, (err, response) => {
+        if (err) {
+          reject(err);
+        } else {
+          resolve(response);
+        }
+      })
+    })
   },
 
-  doImportOpop: async (postgrest, data) => {
-    return postgrest
-      .from('opop')
-      .upsert(data, { onConflict: 'hospcode,hn,seq,oper' });
+  doImportOpop: async (data) => {
+    return new Promise((resolve, reject) => {
+      client.saveOpop(data, (err, response) => {
+        if (err) {
+          reject(err);
+        } else {
+          resolve(response);
+        }
+      })
+    })
   },
 
-  doImportIpd: async (postgrest, data) => {
-    return postgrest
-      .from('ipd')
-      .upsert(data, { onConflict: 'hospcode,hn,an' });
+  doImportIpd: async (data) => {
+    return new Promise((resolve, reject) => {
+      client.saveIpd(data, (err, response) => {
+        if (err) {
+          reject(err);
+        } else {
+          resolve(response);
+        }
+      })
+    })
   },
 
-  doImportIpdx: async (postgrest, data) => {
-    return postgrest
-      .from('ipdx')
-      .upsert(data, { onConflict: 'hospcode,hn,an,diag,dxtype' });
+  doImportIpdx: async (data) => {
+    return new Promise((resolve, reject) => {
+      client.saveIpdx(data, (err, response) => {
+        if (err) {
+          reject(err);
+        } else {
+          resolve(response);
+        }
+      })
+    })
   },
 
-  doImportIpop: async (postgrest, data) => {
-    return postgrest
-      .from('ipop')
-      .upsert(data, { onConflict: 'hospcode,hn,an,oper,optype' });
+  doImportIpop: async (data) => {
+    return new Promise((resolve, reject) => {
+      client.saveIpop(data, (err, response) => {
+        if (err) {
+          reject(err);
+        } else {
+          resolve(response);
+        }
+      })
+    })
   },
 
-  doImportDrug: async (postgrest, data) => {
-    return postgrest
-      .from('drug')
-      .upsert(data, { onConflict: 'hospcode,hn,seq,did' });
+  doImportDrug: async (data) => {
+    return new Promise((resolve, reject) => {
+      client.saveDrug(data, (err, response) => {
+        if (err) {
+          reject(err);
+        } else {
+          resolve(response);
+        }
+      })
+    })
   },
 
-  doImportLab: async (postgrest, data) => {
-    return postgrest
-      .from('lab')
-      .upsert(data, { onConflict: 'hospcode,hn,seq,labtest' });
+  doImportLab: async (data) => {
+    return new Promise((resolve, reject) => {
+      client.saveLab(data, (err, response) => {
+        if (err) {
+          reject(err);
+        } else {
+          resolve(response);
+        }
+      })
+    })
   },
 
-  doImportAppoint: async (postgrest, data) => {
-    return postgrest
-      .from('appoint')
-      .upsert(data, { onConflict: 'hospcode,hn,seq,clinic' });
+  doImportAppoint: async (data) => {
+    return new Promise((resolve, reject) => {
+      client.saveAppoint(data, (err, response) => {
+        if (err) {
+          reject(err);
+        } else {
+          resolve(response);
+        }
+      })
+    })
   },
 
-  doImportDrugallergy: async (postgrest, data) => {
-    return postgrest
-      .from('drugallergy')
-      .upsert(data, { onConflict: 'hospcode,hn,dname' });
+  doImportDrugallergy: async (data) => {
+    return new Promise((resolve, reject) => {
+      client.saveDrugallergy(data, (err, response) => {
+        if (err) {
+          reject(err);
+        } else {
+          resolve(response);
+        }
+      })
+    })
   },
 
 }
