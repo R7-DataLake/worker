@@ -1,15 +1,17 @@
 ## Environments
 ```env
-REST_URL=http://localhost:3000
-API_KEY=xxxxxxxx
+R7_WORKER_GRPC_SERVER=localhost:50051
 
-REDIS_HOST=localhost
-REDIS_USERNAME=admin
-REDIS_PASSWORD=admin
+R7_WORKER_REDIS_HOST=localhost
+R7_WORKER_REDIS_PASSWORD=admin
+
+R7_WORKER_ZONE=R7QUEUE
 ```
+
+`R7_WORKER_ZONE` ชื่อของ ZONE ที่ต้องการจะรับข้อมูล
 
 ## Run
 
 ```shell
-NODE_ENV=development REDIS_USERNAME=admin REDIS_PASSWORD=admin API_KEY=xxxxx REST_URL=http://localhost:3000 node worker.js
+NODE_ENV=development REDIS_PASSWORD=admin GRPC_SERVER=localhost:50051 node worker.js
 ```
