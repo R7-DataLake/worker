@@ -1,75 +1,25 @@
 
 const { Worker } = require('bullmq');
-const processor = require('./processor');
+const { default: tasks } = require('./tasks');
 
 const redisConfiguration = {
   connection: {
-    host: process.env.R7_WORKER_REDIS_HOST || "localhost",
-    port: Number(process.env.R7_WORKER_REDIS_PORT) || 6379,
+    host: process.env.R7PLATFORM_WORKER_REDIS_HOST || "localhost",
+    port: Number(process.env.R7PLATFORM_WORKER_REDIS_PORT) || 6379,
     enableOfflineQueue: false,
-    password: process.env.R7_WORKER_REDIS_PASSWORD || "redispw"
+    password: process.env.R7PLATFORM_WORKER_REDIS_PASSWORD || "redispw"
   }
 }
 
-const ZONE = process.env.R7_WORKER_ZONE || 'R7QUEUE'
-
-const worker = new Worker(ZONE, async job => {
-  switch (job.name) {
-    case 'PERSON': {
-      await processor.importPerson(job);
-      break;
-    }
-    case 'OPD': {
-      await processor.importOpd(job);
-      break;
-    }
-    case 'CHRONIC': {
-      await processor.importChronic(job);
-      break;
-    }
-    case 'OPDX': {
-      await processor.importOpdx(job);
-      break;
-    }
-    case 'OPOP': {
-      await processor.importOpop(job);
-      break;
-    }
-    case 'APPOINT': {
-      await processor.importAppoint(job);
-      break;
-    }
-    case 'DRUG': {
-      await processor.importDrug(job);
-      break;
-    }
-    case 'DRUGALLERGY': {
-      await processor.importDrugallergy(job);
-      break;
-    }
-    case 'IPD': {
-      await processor.importIpd(job);
-      break;
-    }
-    case 'IPDX': {
-      await processor.importIpdx(job);
-      break;
-    }
-    case 'IPOP': {
-      await processor.importIpop(job);
-      break;
-    }
-    case 'LAB': {
-      await processor.importLab(job);
-      break;
-    }
-  }
-}, {
+const ZONE = process.env.R7PLATFORM_WORKER_ZONE || 'R7QUEUE'
+const CONCURRENCY = process.env.R7PLATFORM_WORKER_CONCURRENCY ? Number(process.env.R7PLATFORM_WORKER_CONCURRENCY) : 4
+const worker = new Worker(ZONE, tasks, {
   limiter: {
     max: 100,
     duration: 1000,
   },
-  concurrency: 4, connection: redisConfiguration.connection,
+  concurrency: CONCURRENCY,
+  connection: redisConfiguration.connection,
   defaultJobOptions: {
     attempts: 3,
     backoff: {

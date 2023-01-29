@@ -1,21 +1,21 @@
 lockfileVersion: 5.4
 
 specifiers:
-  '@grpc/grpc-js': ^1.8.5
+  '@grpc/grpc-js': ^1.8.7
   '@grpc/proto-loader': ^0.7.4
-  bullmq: ^3.5.5
+  bullmq: ^3.5.11
   dotenv: ^16.0.3
 
 dependencies:
-  '@grpc/grpc-js': 1.8.5
+  '@grpc/grpc-js': 1.8.7
   '@grpc/proto-loader': 0.7.4
-  bullmq: 3.5.5
+  bullmq: 3.5.11
   dotenv: 16.0.3
 
 packages:
 
-  /@grpc/grpc-js/1.8.5:
-    resolution: {integrity: sha512-+hpNMAz+RdeckGdGRSHj8gjBEv8crcrTZjsagOZtYqCoWu4JXuNqRlxniwxhKFWxNrxZpSMQLmAjIkoDIgFjyQ==}
+  /@grpc/grpc-js/1.8.7:
+    resolution: {integrity: sha512-dRAWjRFN1Zy9mzPNLkFFIWT8T6C9euwluzCHZUKuhC+Bk3MayNPcpgDRyG+sg+n2sitEUySKxUynirVpu9ItKw==}
     engines: {node: ^8.13.0 || >=10.10.0}
     dependencies:
       '@grpc/proto-loader': 0.7.4
@@ -159,8 +159,8 @@ packages:
       balanced-match: 1.0.2
     dev: false
 
-  /bullmq/3.5.5:
-    resolution: {integrity: sha512-ePA7wpnskaEE/brdzYCmseG6ZsI5qHTE4e2/zKF4walbDkdcbt4lyFJtuVX0N6eGFzNs+4jw3zURlnWUCWsNjw==}
+  /bullmq/3.5.11:
+    resolution: {integrity: sha512-dhj5FXeAcPh3P+TnMOCCXKVn+TMcT88c4N1BL7La7dZ1VkmdNbuXFP+iGC5sqkVuN5Ga1/8jof1gYHaBqL4i1Q==}
     dependencies:
       cron-parser: 4.7.1
       glob: 8.0.3
