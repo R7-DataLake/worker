@@ -1,9 +1,11 @@
-const grpc = require("@grpc/grpc-js");
-const protoLoader = require("@grpc/proto-loader");
+import path from "path"
+
+const grpc = require("@grpc/grpc-js")
+const protoLoader = require("@grpc/proto-loader")
 
 const fs = require('fs')
 
-const PROTO_PATH = "../protos/ingress.proto";
+const PROTO_PATH = path.join(__dirname, "../protos/ingress.proto")
 
 let packageDefinition = protoLoader.loadSync(PROTO_PATH, {
   keepCase: true,
@@ -13,9 +15,9 @@ let packageDefinition = protoLoader.loadSync(PROTO_PATH, {
 });
 
 const credentials = grpc.credentials.createSsl(
-  fs.readFileSync('../certs/ca.crt'),
-  fs.readFileSync('../certs/client.key'),
-  fs.readFileSync('../certs/client.crt')
+  fs.readFileSync(path.join(__dirname, '../certs/ca.crt')),
+  fs.readFileSync(path.join(__dirname, '../certs/client.key')),
+  fs.readFileSync(path.join(__dirname, '../certs/client.crt'))
 );
 
 const ingress = grpc.loadPackageDefinition(packageDefinition).ingress

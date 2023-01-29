@@ -1,0 +1,15 @@
+{
+  "verbose": true,
+  "ignore": [
+    "*.test.js",
+    "fixtures/*",
+    "views/*",
+    "public/*",
+    "dist/*"
+  ],
+  "watch": [
+    "src"
+  ],
+  "ext": "ts",
+  "exec": "npx ts-node -P ./tsconfig.json -r ./src/worker.ts"
+}

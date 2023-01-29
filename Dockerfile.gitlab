@@ -22,8 +22,8 @@ RUN apk update && \
 
 RUN wget -qO /bin/pnpm "https://github.com/pnpm/pnpm/releases/latest/download/pnpm-linuxstatic-x64" && chmod +x /bin/pnpm
 
-COPY . .
+RUN git clone https://github.com/R7-DataLake/worker.git && \
+  cd worker && \
+  pnpm i && npm run build
 
-RUN pnpm i && npm run build
-
-CMD ["node", "/app/dist/worker.js"]
+CMD ["node", "/app/worker/dist/worker.js"]
