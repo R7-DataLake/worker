@@ -2,75 +2,75 @@ const model = require('./model');
 
 module.exports = {
 
-  importPerson: async (postgrest, jobs) => {
+  importPerson: async (jobs) => {
     const data = jobs.data;
-    await model.doImportPerson(postgrest, data);
+    await model.doImportPerson(data);
     return jobs.id;
   },
 
-  importOpd: async (postgrest, jobs) => {
+  importOpd: async (jobs) => {
     const data = jobs.data;
-    await model.doImportOpd(postgrest, data);
+    await model.doImportOpd(data);
     return jobs.id;
   },
 
-  importChronic: async (postgrest, jobs) => {
+  importChronic: async (jobs) => {
     const data = jobs.data;
-    await model.doImportChronic(postgrest, data);
+    await model.doImportChronic(data);
     return jobs.id;
   },
 
-  importOpdx: async (postgrest, jobs) => {
+  importOpdx: async (jobs) => {
     const data = jobs.data;
-    await model.doImportOpdx(postgrest, data);
+    await model.doImportOpdx(data);
     return jobs.id;
   },
 
-  importOpop: async (postgrest, jobs) => {
+  importOpop: async (jobs) => {
     const data = jobs.data;
-    await model.doImportOpop(postgrest, data);
+    await model.doImportOpop(data);
     return jobs.id;
   },
 
-  importIpd: async (postgrest, jobs) => {
+  importIpd: async (jobs) => {
     const data = jobs.data;
-    await model.doImportIpd(postgrest, data);
+    await model.doImportIpd(data);
     return jobs.id;
   },
 
-  importIpdx: async (postgrest, jobs) => {
+  importIpdx: async (jobs) => {
     const data = jobs.data;
-    await model.doImportIpdx(postgrest, data);
+    await model.doImportIpdx(data);
     return jobs.id;
   },
 
-  importIpop: async (postgrest, jobs) => {
+  importIpop: async (jobs) => {
     const data = jobs.data;
-    await model.doImportIpop(postgrest, data);
+    await model.doImportIpop(data);
     return jobs.id;
   },
 
-  importDrug: async (postgrest, jobs) => {
+  importDrug: async (jobs) => {
     const data = jobs.data;
-    await model.doImportDrug(postgrest, data);
+    await model.doImportDrug(data);
     return jobs.id;
   },
 
-  importLab: async (postgrest, jobs) => {
+  importLab: async (jobs) => {
     const data = jobs.data;
-    await model.doImportLab(postgrest, data);
+    await model.doImportLab(data);
     return jobs.id;
   },
 
-  importAppoint: async (postgrest, jobs) => {
+  importAppoint: async (jobs) => {
     const data = jobs.data;
-    await model.doImportAppoint(postgrest, data);
+    await model.doImportAppoint(data);
     return jobs.id;
   },
 
-  importDrugallergy: async (postgrest, jobs) => {
+  importDrugallergy: async (jobs) => {
     const data = jobs.data;
-    await model.doImportDrugallergy(postgrest, data);
+    await model.doImportDrugallergy(data);
     return jobs.id;
   },
 

@@ -3,13 +3,15 @@
   "version": "1.0.0",
   "description": "",
   "scripts": {
-    "start": "npx nodemon"
+    "start": "node src/worker.js"
   },
   "keywords": [],
-  "author": "",
+  "author": "Satit Rianpit <rianpit@gmail.com>",
   "license": "GPLv3",
   "dependencies": {
-    "@supabase/postgrest-js": "^1.1.1",
-    "bullmq": "^3.5.5"
+    "@grpc/grpc-js": "^1.8.7",
+    "@grpc/proto-loader": "^0.7.4",
+    "bullmq": "^3.5.11",
+    "dotenv": "^16.0.3"
   }
 }
