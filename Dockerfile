@@ -2,7 +2,7 @@ FROM node:19-alpine
 
 LABEL maintainer="Satit Rianpit <rianpit@gmail.com>"
 
-WORKDIR /home/worker
+WORKDIR /app
 
 ENV NODE_ENV === 'production'
 
@@ -22,8 +22,8 @@ RUN apk update && \
 
 RUN wget -qO /bin/pnpm "https://github.com/pnpm/pnpm/releases/latest/download/pnpm-linuxstatic-x64" && chmod +x /bin/pnpm
 
-RUN git clone https://github.com/siteslave/r7-datalake-worker.git && \
-  cd r7-datalake-worker && \
+RUN git clone https://github.com/R7-DataLake/worker.git && \
+  cd worker && \
   pnpm i
 
-CMD ["node", "/home/worker/r7-datalake-worker/src/worker.js"]
+CMD ["node", "/app/worker/src/worker.js"]
