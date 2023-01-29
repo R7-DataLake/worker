@@ -26,4 +26,4 @@ RUN git clone https://github.com/siteslave/r7-datalake-worker.git && \
   cd r7-datalake-worker && \
   pnpm i
 
-CMD ["node", "/home/worker/r7-datalake-worker/worker.js"]
+CMD ["node", "/home/worker/r7-datalake-worker/src/worker.js"]
