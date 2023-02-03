@@ -1,4 +1,4 @@
-const model = require('./model');
+const model = require('./model')
 
 const test = async () => {
   const data = {
@@ -49,11 +49,10 @@ const test = async () => {
   try {
     const result = await model.doImportPerson(data)
 
-    console.log(result);
+    console.log(result)
   } catch (error) {
-    console.log(error);
+    console.log(error)
   }
 }
-
 
 test()

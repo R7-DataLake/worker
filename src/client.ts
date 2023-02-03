@@ -26,4 +26,4 @@ const grpcServer = process.env.R7PLATFORM_WORKER_GRPC_SERVER || "localhost:50051
 const client = new ingress.IngressService(grpcServer, credentials)
 // const client = new ingress.IngressService(grpc_server, grpc.credentials.createInsecure())
 
-module.exports = client;
+module.exports = client

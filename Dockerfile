@@ -1,4 +1,4 @@
-FROM node:19-alpine
+FROM node:19-alpine as builder
 
 LABEL maintainer="Satit Rianpit <rianpit@gmail.com>"
 
@@ -9,21 +9,22 @@ ENV NODE_ENV === 'production'
 RUN apk update && \
   apk upgrade && \
   apk add --no-cache \
-  git \
-  tzdata \
-  build-base \
-  libtool \
-  autoconf \
-  automake \
   g++ \
-  make && \
-  cp /usr/share/zoneinfo/Asia/Bangkok /etc/localtime && \
-  echo "Asia/Bangkok" > /etc/timezone
+  make \
+  python3
 
 RUN wget -qO /bin/pnpm "https://github.com/pnpm/pnpm/releases/latest/download/pnpm-linuxstatic-x64" && chmod +x /bin/pnpm
 
 COPY . .
 
-RUN pnpm i && npm run build
+RUN pnpm i && pnpm run build
+
+RUN rm -rf node_modules src && pnpm i --production 
+
+FROM node:19-slim
+
+COPY --from=builder /app /app
+
+EXPOSE 50051
 
 CMD ["node", "/app/dist/worker.js"]
