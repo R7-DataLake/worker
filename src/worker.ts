@@ -1,6 +1,6 @@
 
-import { Worker } from 'bullmq';
-import tasks from './tasks';
+import { Worker } from 'bullmq'
+import tasks from './tasks'
 
 const redisConfiguration = {
   connection: {
@@ -25,7 +25,7 @@ const worker = new Worker(ZONE, tasks, {
 
 // Job success
 worker.on('completed', (job: any, returnValue: any) => {
-  console.info(`${job.id} has completed!`);
+  console.info(`${job.id} has completed!`)
   console.info(`${returnValue} is returned value.`)
   // 1. add to metadata queue
   // 2. add to notify queue
@@ -33,12 +33,12 @@ worker.on('completed', (job: any, returnValue: any) => {
 
 // Job failed
 worker.on('failed', (job: any, err: any) => {
-  console.error(`${job.id} has failed with ${err.message}`);
+  console.error(`${job.id} has failed with ${err.message}`)
   // add to error queue
 });
 
 // Worker error
 worker.on('error', err => {
-  console.error(err);
-});
+  console.error(err)
+})
 

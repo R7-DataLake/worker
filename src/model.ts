@@ -1,13 +1,13 @@
-const client = require("./client");
+const client = require("./client")
 
 export class GRPCModel {
   async doImportPerson(data: any): Promise<any> {
     return new Promise((resolve: any, reject: any) => {
       client.savePerson(data, (err: any, response: any) => {
         if (err) {
-          reject(err);
+          reject(err)
         } else {
-          resolve(response);
+          resolve(response)
         }
       })
     })
@@ -17,9 +17,9 @@ export class GRPCModel {
     return new Promise((resolve: any, reject: any) => {
       client.saveOpd(data, (err: any, response: any) => {
         if (err) {
-          reject(err);
+          reject(err)
         } else {
-          resolve(response);
+          resolve(response)
         }
       })
     })
@@ -29,9 +29,9 @@ export class GRPCModel {
     return new Promise((resolve: any, reject: any) => {
       client.saveChronic(data, (err: any, response: any) => {
         if (err) {
-          reject(err);
+          reject(err)
         } else {
-          resolve(response);
+          resolve(response)
         }
       })
     })
@@ -41,9 +41,9 @@ export class GRPCModel {
     return new Promise((resolve: any, reject: any) => {
       client.saveOpdx(data, (err: any, response: any) => {
         if (err) {
-          reject(err);
+          reject(err)
         } else {
-          resolve(response);
+          resolve(response)
         }
       })
     })
@@ -53,9 +53,9 @@ export class GRPCModel {
     return new Promise((resolve: any, reject: any) => {
       client.saveOpop(data, (err: any, response: any) => {
         if (err) {
-          reject(err);
+          reject(err)
         } else {
-          resolve(response);
+          resolve(response)
         }
       })
     })
@@ -65,9 +65,9 @@ export class GRPCModel {
     return new Promise((resolve: any, reject: any) => {
       client.saveIpd(data, (err: any, response: any) => {
         if (err) {
-          reject(err);
+          reject(err)
         } else {
-          resolve(response);
+          resolve(response)
         }
       })
     })
@@ -77,9 +77,9 @@ export class GRPCModel {
     return new Promise((resolve: any, reject: any) => {
       client.saveIpdx(data, (err: any, response: any) => {
         if (err) {
-          reject(err);
+          reject(err)
         } else {
-          resolve(response);
+          resolve(response)
         }
       })
     })
@@ -89,9 +89,9 @@ export class GRPCModel {
     return new Promise((resolve: any, reject: any) => {
       client.saveIpop(data, (err: any, response: any) => {
         if (err) {
-          reject(err);
+          reject(err)
         } else {
-          resolve(response);
+          resolve(response)
         }
       })
     })
@@ -101,9 +101,9 @@ export class GRPCModel {
     return new Promise((resolve: any, reject: any) => {
       client.saveDrug(data, (err: any, response: any) => {
         if (err) {
-          reject(err);
+          reject(err)
         } else {
-          resolve(response);
+          resolve(response)
         }
       })
     })
@@ -113,9 +113,9 @@ export class GRPCModel {
     return new Promise((resolve: any, reject: any) => {
       client.saveLab(data, (err: any, response: any) => {
         if (err) {
-          reject(err);
+          reject(err)
         } else {
-          resolve(response);
+          resolve(response)
         }
       })
     })
@@ -125,9 +125,9 @@ export class GRPCModel {
     return new Promise((resolve: any, reject: any) => {
       client.saveAppoint(data, (err: any, response: any) => {
         if (err) {
-          reject(err);
+          reject(err)
         } else {
-          resolve(response);
+          resolve(response)
         }
       })
     })
@@ -137,9 +137,9 @@ export class GRPCModel {
     return new Promise((resolve: any, reject: any) => {
       client.saveDrugallergy(data, (err: any, response: any) => {
         if (err) {
-          reject(err);
+          reject(err)
         } else {
-          resolve(response);
+          resolve(response)
         }
       })
     })
