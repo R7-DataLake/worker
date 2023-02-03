@@ -21,8 +21,6 @@ RUN rm -rf node_modules src && pnpm i --production
 
 FROM node:19-slim
 
-ENV NODE_ENV=production
-
 COPY --from=builder /app /app
 
 EXPOSE 50051
