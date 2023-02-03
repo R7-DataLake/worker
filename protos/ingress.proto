@@ -1,22 +1,27 @@
 syntax = "proto3";
 
-import "google/protobuf/empty.proto";
+// import "google/protobuf/empty.proto";
 
 package ingress;
 
 service IngressService {
-  rpc SavePerson (PersonRequest) returns (google.protobuf.Empty) {}
-  rpc SaveOpd (OpdRequest) returns (google.protobuf.Empty) {}
-  rpc SaveChronic (ChronicRequest) returns (google.protobuf.Empty) {}
-  rpc SaveOpdx (OpdxRequest) returns (google.protobuf.Empty) {}
-  rpc SaveOpop (OpopRequest) returns (google.protobuf.Empty) {}
-  rpc SaveIpd (IpdRequest) returns (google.protobuf.Empty) {}
-  rpc SaveIpdx (IpdxRequest) returns (google.protobuf.Empty) {}
-  rpc SaveIpop (IpopRequest) returns (google.protobuf.Empty) {}
-  rpc SaveDrug (DrugRequest) returns (google.protobuf.Empty) {}
-  rpc SaveLab (LabRequest) returns (google.protobuf.Empty) {}
-  rpc SaveAppoint (AppointRequest) returns (google.protobuf.Empty) {}
-  rpc SaveDrugallergy (DrugallergyRequest) returns (google.protobuf.Empty) {}
+  // rpc SavePerson (PersonRequest) returns (google.protobuf.Empty) {}
+  rpc SavePerson (PersonRequest) returns (MessageReply) {}
+  rpc SaveOpd (OpdRequest) returns (MessageReply) {}
+  rpc SaveChronic (ChronicRequest) returns (MessageReply) {}
+  rpc SaveOpdx (OpdxRequest) returns (MessageReply) {}
+  rpc SaveOpop (OpopRequest) returns (MessageReply) {}
+  rpc SaveIpd (IpdRequest) returns (MessageReply) {}
+  rpc SaveIpdx (IpdxRequest) returns (MessageReply) {}
+  rpc SaveIpop (IpopRequest) returns (MessageReply) {}
+  rpc SaveDrug (DrugRequest) returns (MessageReply) {}
+  rpc SaveLab (LabRequest) returns (MessageReply) {}
+  rpc SaveAppoint (AppointRequest) returns (MessageReply) {}
+  rpc SaveDrugallergy (DrugallergyRequest) returns (MessageReply) {}
+}
+
+message MessageReply {
+  bool ok = 1;
 }
 
 message PersonRequest {
