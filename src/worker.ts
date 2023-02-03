@@ -12,7 +12,8 @@ const redisConfiguration = {
 }
 
 const ZONE = process.env.R7PLATFORM_WORKER_ZONE || 'R7QUEUE'
-const CONCURRENCY = process.env.R7PLATFORM_WORKER_CONCURRENCY ? Number(process.env.R7PLATFORM_WORKER_CONCURRENCY) : 4
+const CONCURRENCY = process.env.R7PLATFORM_WORKER_CONCURRENCY ?
+  Number(process.env.R7PLATFORM_WORKER_CONCURRENCY) : 4
 
 const worker = new Worker(ZONE, tasks, {
   limiter: {
