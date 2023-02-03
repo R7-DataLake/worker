@@ -4,8 +4,6 @@ LABEL maintainer="Satit Rianpit <rianpit@gmail.com>"
 
 WORKDIR /app
 
-ENV NODE_ENV === 'production'
-
 RUN apk update && \
   apk upgrade && \
   apk add --no-cache \
