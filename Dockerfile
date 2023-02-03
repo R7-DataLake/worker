@@ -4,8 +4,6 @@ LABEL maintainer="Satit Rianpit <rianpit@gmail.com>"
 
 WORKDIR /app
 
-ENV NODE_ENV=production
-
 RUN apk update && \
   apk upgrade && \
   apk add --no-cache \
@@ -22,6 +20,8 @@ RUN pnpm i && pnpm run build
 RUN rm -rf node_modules src && pnpm i --production 
 
 FROM node:19-slim
+
+ENV NODE_ENV=production
 
 COPY --from=builder /app /app
 
