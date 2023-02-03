@@ -12,74 +12,74 @@ jwtMetadata.add("Authorization", `Bearer ${token}`)
 export class ProcessModel {
   async importPerson(jobs: any) {
     const data = jobs.data
-    await grpcModel.doImportPerson(data, jwtMetadata)
-    return jobs.id
+    const json: any = { data }
+    return grpcModel.doImportPerson(json, jwtMetadata)
   }
 
   async importOpd(jobs: any) {
     const data = jobs.data
-    await grpcModel.doImportOpd(data, jwtMetadata)
-    return jobs.id
+    const json: any = { data }
+    return grpcModel.doImportOpd(json, jwtMetadata)
   }
 
   async importChronic(jobs: any) {
     const data = jobs.data
-    await grpcModel.doImportChronic(data, jwtMetadata)
-    return jobs.id
+    const json: any = { data }
+    return grpcModel.doImportChronic(json, jwtMetadata)
   }
 
   async importOpdx(jobs: any) {
     const data = jobs.data
-    await grpcModel.doImportOpdx(data, jwtMetadata)
-    return jobs.id
+    const json: any = { data }
+    return grpcModel.doImportOpdx(json, jwtMetadata)
   }
 
   async importOpop(jobs: any) {
     const data = jobs.data
-    await grpcModel.doImportOpop(data, jwtMetadata)
-    return jobs.id
+    const json: any = { data }
+    return grpcModel.doImportOpop(json, jwtMetadata)
   }
 
   async importIpd(jobs: any) {
     const data = jobs.data
-    await grpcModel.doImportIpd(data, jwtMetadata)
-    return jobs.id
+    const json: any = { data }
+    return grpcModel.doImportIpd(json, jwtMetadata)
   }
 
   async importIpdx(jobs: any) {
     const data = jobs.data
-    await grpcModel.doImportIpdx(data, jwtMetadata)
-    return jobs.id
+    const json: any = { data }
+    return grpcModel.doImportIpdx(json, jwtMetadata)
   }
 
   async importIpop(jobs: any) {
     const data = jobs.data
-    await grpcModel.doImportIpop(data, jwtMetadata)
-    return jobs.id
+    const json: any = { data }
+    return grpcModel.doImportIpop(json, jwtMetadata)
   }
 
   async importDrug(jobs: any) {
     const data = jobs.data
-    await grpcModel.doImportDrug(data, jwtMetadata)
-    return jobs.id
+    const json: any = { data }
+    return grpcModel.doImportDrug(json, jwtMetadata)
   }
 
   async importLab(jobs: any) {
     const data = jobs.data
-    await grpcModel.doImportLab(data, jwtMetadata)
-    return jobs.id
+    const json: any = { data }
+    return grpcModel.doImportLab(json, jwtMetadata)
   }
 
   async importAppoint(jobs: any) {
     const data = jobs.data
-    await grpcModel.doImportAppoint(data, jwtMetadata)
-    return jobs.id
+    const json: any = { data }
+    return grpcModel.doImportAppoint(json, jwtMetadata)
   }
 
   async importDrugallergy(jobs: any) {
     const data = jobs.data
-    await grpcModel.doImportDrugallergy(data, jwtMetadata)
-    return jobs.id
+    const json: any = { data }
+    return grpcModel.doImportDrugallergy(json, jwtMetadata)
   }
 
 }

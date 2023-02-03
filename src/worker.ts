@@ -25,9 +25,8 @@ const worker = new Worker(ZONE, tasks, {
 });
 
 // Job success
-worker.on('completed', (job: any, returnValue: any) => {
+worker.on('completed', (job: any) => {
   console.info(`${job.id} has completed!`)
-  console.info(`${returnValue} is returned value.`)
   // 1. add to metadata queue
   // 2. add to notify queue
 });
