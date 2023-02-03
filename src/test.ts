@@ -1,8 +1,8 @@
-import { GRPCModel } from "./model";
+import { GRPCModel } from "./model"
 
 const grpc = require("@grpc/grpc-js")
 
-const token = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNTE2MjM5MDIyfQ.H6_ISfGQFCY-hDEXGZ2lN7hZlvuPBVRRCgOdNvlxo8Q';
+const token = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNTE2MjM5MDIyfQ.H6_ISfGQFCY-hDEXGZ2lN7hZlvuPBVRRCgOdNvlxo8Q'
 
 const jwtMetadata = new grpc.Metadata()
 jwtMetadata.add("Authorization", `Bearer ${token}`)
