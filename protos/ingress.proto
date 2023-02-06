@@ -69,8 +69,8 @@ message OpdRequest {
     string typeout = 14;
     string insType = 15;
     string insNumber = 16;
-    string InsHospmain = 17;
-    string InsHospsub = 18;
+    string insHospmain = 17;
+    string insHospsub = 18;
     string diagText = 19;
     string dUpdate = 20;
   }
