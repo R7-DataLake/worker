@@ -3,6 +3,8 @@ lockfileVersion: 5.4
 specifiers:
   '@grpc/grpc-js': ^1.8.7
   '@grpc/proto-loader': ^0.7.4
+  '@types/lodash': ^4.14.191
+  '@types/luxon': ^3.2.0
   '@types/node': ^18.11.18
   bullmq: ^3.5.11
   dotenv: ^16.0.3
@@ -11,6 +13,8 @@ specifiers:
   gulp-typescript: 6.0.0-alpha.1
   gulp-uglify: ^3.0.2
   jsonwebtoken: ^9.0.0
+  lodash: ^4.17.21
+  luxon: ^3.2.1
   nodemon: ^2.0.20
   typescript: ^4.9.4
 
@@ -20,8 +24,12 @@ dependencies:
   bullmq: 3.5.11
   dotenv: 16.0.3
   jsonwebtoken: 9.0.0
+  lodash: 4.17.21
+  luxon: 3.2.1
 
 devDependencies:
+  '@types/lodash': 4.14.191
+  '@types/luxon': 3.2.0
   '@types/node': 18.11.18
   gulp: 4.0.2
   gulp-cli: 2.3.0
@@ -147,9 +155,17 @@ packages:
     resolution: {integrity: sha512-Vvn3zZrhQZkkBE8LSuW3em98c0FwgO4nxzv6OdSxPKJIEKY2bGbHn+mhGIPerzI4twdxaP8/0+06HBpwf345Lw==}
     dev: false
 
+  /@types/lodash/4.14.191:
+    resolution: {integrity: sha512-BdZ5BCCvho3EIXw6wUCXHe7rS53AIDPLE+JzwgT+OsJk53oBfbSmZZ7CX4VaRoN78N+TJpFi9QPlfIVNmJYWxQ==}
+    dev: true
+
   /@types/long/4.0.2:
     resolution: {integrity: sha512-MqTGEo5bj5t157U6fA/BiDynNkn0YknVdh48CMPkTSpFTVmvao5UQmm7uEF6xBEo7qIMAlY/JSleYaE6VOdpaA==}
     dev: false
+
+  /@types/luxon/3.2.0:
+    resolution: {integrity: sha512-lGmaGFoaXHuOLXFvuju2bfvZRqxAqkHPx9Y9IQdQABrinJJshJwfNCKV+u7rR3kJbiqfTF/NhOkcxxAFrObyaA==}
+    dev: true
 
   /@types/node/18.11.18:
     resolution: {integrity: sha512-DHQpWGjyQKSHj3ebjFI/wRKcqQcdR+MoFBygntYOZytCqNfkd2ZC4ARDJ2DQqhjH5p85Nnd3jhUJIXrszFX/JA==}
