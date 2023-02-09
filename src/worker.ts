@@ -15,19 +15,19 @@ const redisWorker = {
 
 const redisLog = {
   connection: {
-    host: process.env.R7PLATFORM_WORKER_REDIS_HOST || "localhost",
-    port: Number(process.env.R7PLATFORM_WORKER_REDIS_PORT) || 6379,
+    host: process.env.R7PLATFORM_WORKER_LOG_REDIS_HOST || "localhost",
+    port: Number(process.env.R7PLATFORM_WORKER_LOG_REDIS_PORT) || 6379,
     enableOfflineQueue: false,
-    password: process.env.R7PLATFORM_WORKER_REDIS_PASSWORD || ""
+    password: process.env.R7PLATFORM_WORKER_LOG_REDIS_PASSWORD || ""
   }
 }
 
 const redisNotify = {
   connection: {
-    host: process.env.R7PLATFORM_WORKER_REDIS_HOST || "localhost",
-    port: Number(process.env.R7PLATFORM_WORKER_REDIS_PORT) || 6379,
+    host: process.env.R7PLATFORM_WORKER_NOTIFY_REDIS_HOST || "localhost",
+    port: Number(process.env.R7PLATFORM_WORKER_NOTIFY_REDIS_PORT) || 6379,
     enableOfflineQueue: false,
-    password: process.env.R7PLATFORM_WORKER_REDIS_PASSWORD || ""
+    password: process.env.R7PLATFORM_WORKER_NOTIFY_REDIS_PASSWORD || ""
   }
 }
 
