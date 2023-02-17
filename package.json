@@ -10,9 +10,9 @@
   "author": "Satit Rianpit <rianpit@gmail.com>",
   "license": "GPLv3",
   "dependencies": {
-    "@grpc/grpc-js": "^1.8.7",
-    "@grpc/proto-loader": "^0.7.4",
-    "bullmq": "^3.5.11",
+    "@grpc/grpc-js": "^1.8.9",
+    "@grpc/proto-loader": "^0.7.5",
+    "bullmq": "^3.7.0",
     "dotenv": "^16.0.3",
     "jsonwebtoken": "^9.0.0",
     "lodash": "^4.17.21",
@@ -21,12 +21,12 @@
   "devDependencies": {
     "@types/lodash": "^4.14.191",
     "@types/luxon": "^3.2.0",
-    "@types/node": "^18.11.18",
+    "@types/node": "^18.13.0",
     "gulp": "^4.0.2",
     "gulp-cli": "^2.3.0",
     "gulp-typescript": "6.0.0-alpha.1",
     "gulp-uglify": "^3.0.2",
     "nodemon": "^2.0.20",
-    "typescript": "^4.9.4"
+    "typescript": "^4.9.5"
   }
 }
