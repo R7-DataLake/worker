@@ -3,53 +3,55 @@ import { ProcessModel } from './processor'
 const processModel = new ProcessModel()
 
 export default async (job: any) => {
+  const data = job.data;
+  // console.log(job);
   switch (job.name) {
     case 'PERSON': {
-      await processModel.importPerson(job)
+      await processModel.importPerson(data)
       break
     }
     case 'OPD': {
-      await processModel.importOpd(job)
+      await processModel.importOpd(data)
       break
     }
     case 'CHRONIC': {
-      await processModel.importChronic(job)
+      await processModel.importChronic(data)
       break
     }
     case 'OPDX': {
-      await processModel.importOpdx(job)
+      await processModel.importOpdx(data)
       break
     }
     case 'OPOP': {
-      await processModel.importOpop(job)
+      await processModel.importOpop(data)
       break
     }
     case 'APPOINT': {
-      await processModel.importAppoint(job)
+      await processModel.importAppoint(data)
       break
     }
     case 'DRUG': {
-      await processModel.importDrug(job)
+      await processModel.importDrug(data)
       break
     }
     case 'DRUGALLERGY': {
-      await processModel.importDrugallergy(job)
+      await processModel.importDrugallergy(data)
       break
     }
     case 'IPD': {
-      await processModel.importIpd(job)
+      await processModel.importIpd(data)
       break
     }
     case 'IPDX': {
-      await processModel.importIpdx(job)
+      await processModel.importIpdx(data)
       break
     }
     case 'IPOP': {
-      await processModel.importIpop(job)
+      await processModel.importIpop(data)
       break
     }
     case 'LAB': {
-      await processModel.importLab(job)
+      await processModel.importLab(data)
       break
     }
   }

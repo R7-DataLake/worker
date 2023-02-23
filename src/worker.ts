@@ -86,61 +86,77 @@ const logQueue = new Queue("LOG", {
 
 // Job success
 worker.on('completed', async (job: any) => {
-  console.info(`Transaction ID: ${job.trx_id} has completed!`)
-  // console.log(job)
+  // console.log(job.data)
+  const data = job.data;
+  console.info(`Transaction ID: ${data.trx_id} has completed!`)
   // 1. add to log queue
   const now = DateTime.now().toSQL({ includeOffset: false })
+
   await logQueue.add('INGRESS', {
-    trx_id: job.trx_id,
-    hospcode: job.hospcode,
-    ingress_zone: job.ingress_zone,
-    user_id: job.user_id,
-    total_records: job.total_records,
-    file_name: job.file_name,
+    trx_id: data.trx_id,
+    hospcode: data.hospcode,
+    ingress_zone: data.ingress_zone,
+    user_id: data.user_id,
+    total_records: data.total_records,
+    file_name: data.file_name,
     status: 'success',
     created_at: now
   })
 
   // 2. add to notify queue
-  await notifyQueue.add('INGRESS', {
-    trx_id: job.trx_id,
-    hospcode: job.hospcode,
-    ingress_zone: job.ingress_zone,
-    user_id: job.user_id,
-    total_records: job.total_records,
-    file_name: job.file_name,
+  const ingressData: any = {
+    trx_id: data.trx_id,
+    hospcode: data.hospcode,
+    ingress_zone: data.ingress_zone,
+    user_id: data.user_id,
+    total_records: data.total_records,
+    file_name: data.file_name,
     status: 'success',
     created_at: now
-  })
+  }
+
+  await notifyQueue.add('INGRESS', ingressData);
 })
 
 // Job failed
 worker.on('failed', async (job: any, err: any) => {
-  console.error(`Transaction ID: ${job.trx_id} has failed with ${err.message}`)
-  const now = DateTime.now().toSQL({ includeOffset: false })
-  await logQueue.add('INGRESS', {
-    trx_id: job.trx_id,
-    hospcode: job.hospcode,
-    ingress_zone: job.ingress_zone,
-    user_id: job.user_id,
-    total_records: job.total_records,
-    file_name: job.file_name,
+  // console.log(err);
+  const data = job.data;
+  // console.log(data);
+
+  console.error(`Transaction ID: ${data.trx_id} has failed with ${err.message}`)
+  const now = DateTime.now().toSQL({ includeOffset: false });
+  const logData: any = {
+    trx_id: data.trx_id,
+    hospcode: data.hospcode,
+    ingress_zone: data.ingress_zone,
+    user_id: data.user_id,
+    total_records: data.total_records,
+    file_name: data.file_name,
     status: 'error',
     error: err.message,
     created_at: now
-  })
+  }
+
+  // console.log(logData);
+
+  await logQueue.add('INGRESS', logData);
 
   // 2. add to notify queue
-  await notifyQueue.add('INGRESS', {
-    trx_id: job.trx_id,
-    hospcode: job.hospcode,
-    ingress_zone: job.ingress_zone,
-    user_id: job.user_id,
-    total_records: job.total_records,
-    file_name: job.file_name,
+  const notifyData: any = {
+    trx_id: data.trx_id,
+    hospcode: data.hospcode,
+    ingress_zone: data.ingress_zone,
+    user_id: data.user_id,
+    total_records: data.data.length,
+    file_name: data.file_name,
     status: 'error',
     created_at: now
-  })
+  }
+
+  // console.log(notifyData);
+
+  await notifyQueue.add('INGRESS', notifyData);
 })
 
 // Worker error
