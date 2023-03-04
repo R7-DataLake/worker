@@ -56,7 +56,6 @@ const notifyQueue = new Queue("NOTIFY", {
     },
     removeOnComplete: {
       age: 3600, // keep up to 1 hour
-      count: 1000, // keep up to 10000 jobs
     },
     removeOnFail: {
       age: 2 * 24 * 3600, // keep up to 48 hours
@@ -76,7 +75,6 @@ const logQueue = new Queue("LOG", {
     },
     removeOnComplete: {
       age: 3600, // keep up to 1 hour
-      count: 1000, // keep up to 10000 jobs
     },
     removeOnFail: {
       age: 2 * 24 * 3600, // keep up to 48 hours
