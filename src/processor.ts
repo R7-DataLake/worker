@@ -4,7 +4,7 @@ import { GRPCModel } from './model'
 
 const grpcModel = new GRPCModel()
 
-const token = process.env.R7PLATFORM_WORKER_API_KEY || 'xxxxxx.xxxxxx.xxxxxxx'
+const token = process.env.R7PLATFORM_WORKER_GRPC_API_KEY || ''
 
 const jwtMetadata = new grpc.Metadata()
 jwtMetadata.add("Authorization", `Bearer ${token}`)
