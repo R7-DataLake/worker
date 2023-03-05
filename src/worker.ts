@@ -22,14 +22,14 @@ const redisLog = {
   }
 }
 
-const redisNotify = {
-  connection: {
-    host: process.env.R7PLATFORM_WORKER_NOTIFY_REDIS_HOST || "localhost",
-    port: Number(process.env.R7PLATFORM_WORKER_NOTIFY_REDIS_PORT) || 6379,
-    enableOfflineQueue: false,
-    password: process.env.R7PLATFORM_WORKER_NOTIFY_REDIS_PASSWORD || ""
-  }
-}
+// const redisNotify = {
+//   connection: {
+//     host: process.env.R7PLATFORM_WORKER_NOTIFY_REDIS_HOST || "localhost",
+//     port: Number(process.env.R7PLATFORM_WORKER_NOTIFY_REDIS_PORT) || 6379,
+//     enableOfflineQueue: false,
+//     password: process.env.R7PLATFORM_WORKER_NOTIFY_REDIS_PASSWORD || ""
+//   }
+// }
 
 const ZONE = process.env.R7PLATFORM_WORKER_ZONE || 'R7QUEUE'
 const CONCURRENCY = process.env.R7PLATFORM_WORKER_CONCURRENCY ?
@@ -37,7 +37,7 @@ const CONCURRENCY = process.env.R7PLATFORM_WORKER_CONCURRENCY ?
 
 const worker = new Worker(ZONE, tasks, {
   limiter: {
-    max: 100,
+    max: 50,
     duration: 1000,
   },
   concurrency: CONCURRENCY,
@@ -45,23 +45,23 @@ const worker = new Worker(ZONE, tasks, {
 })
 
 // Notify Queue
-const notifyQueue = new Queue("NOTIFY", {
-  connection: redisNotify.connection,
-  defaultJobOptions: {
-    delay: 1000,
-    attempts: 5,
-    backoff: {
-      type: 'exponential',
-      delay: 3000,
-    },
-    removeOnComplete: {
-      age: 3600, // keep up to 1 hour
-    },
-    removeOnFail: {
-      age: 2 * 24 * 3600, // keep up to 48 hours
-    },
-  }
-})
+// const notifyQueue = new Queue("NOTIFY", {
+//   connection: redisNotify.connection,
+//   defaultJobOptions: {
+//     delay: 1000,
+//     attempts: 5,
+//     backoff: {
+//       type: 'exponential',
+//       delay: 3000,
+//     },
+//     removeOnComplete: {
+//       age: 3600, // keep up to 1 hour
+//     },
+//     removeOnFail: {
+//       age: 2 * 24 * 3600, // keep up to 48 hours
+//     },
+//   }
+// })
 
 // Log Queue
 const logQueue = new Queue("LOG", {
@@ -102,18 +102,18 @@ worker.on('completed', async (job: any) => {
   })
 
   // 2. add to notify queue
-  const ingressData: any = {
-    trx_id: data.trx_id,
-    hospcode: data.hospcode,
-    ingress_zone: data.ingress_zone,
-    user_id: data.user_id,
-    total_records: data.total_records,
-    file_name: data.file_name,
-    status: 'success',
-    created_at: now
-  }
+  // const ingressData: any = {
+  //   trx_id: data.trx_id,
+  //   hospcode: data.hospcode,
+  //   ingress_zone: data.ingress_zone,
+  //   user_id: data.user_id,
+  //   total_records: data.total_records,
+  //   file_name: data.file_name,
+  //   status: 'success',
+  //   created_at: now
+  // }
 
-  await notifyQueue.add('INGRESS', ingressData);
+  // await notifyQueue.add('INGRESS', ingressData);
 })
 
 // Job failed
@@ -141,20 +141,19 @@ worker.on('failed', async (job: any, err: any) => {
   await logQueue.add('INGRESS', logData);
 
   // 2. add to notify queue
-  const notifyData: any = {
-    trx_id: data.trx_id,
-    hospcode: data.hospcode,
-    ingress_zone: data.ingress_zone,
-    user_id: data.user_id,
-    total_records: data.data.length,
-    file_name: data.file_name,
-    status: 'error',
-    created_at: now
-  }
+  // const notifyData: any = {
+  //   trx_id: data.trx_id,
+  //   hospcode: data.hospcode,
+  //   ingress_zone: data.ingress_zone,
+  //   user_id: data.user_id,
+  //   total_records: data.data.length,
+  //   file_name: data.file_name,
+  //   status: 'error',
+  //   created_at: now
+  // }
 
   // console.log(notifyData);
-
-  await notifyQueue.add('INGRESS', notifyData);
+  // await notifyQueue.add('INGRESS', notifyData);
 })
 
 // Worker error
