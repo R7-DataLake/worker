@@ -34,10 +34,12 @@ const redisLog = {
 const ZONE = process.env.R7PLATFORM_WORKER_ZONE || 'R7QUEUE'
 const CONCURRENCY = process.env.R7PLATFORM_WORKER_CONCURRENCY ?
   Number(process.env.R7PLATFORM_WORKER_CONCURRENCY) : 4
+const MAX_QUEUE_LIMIT = process.env.R7PLATFORM_WORKER_MAX_QUEUE_LIMIT ?
+  Number(process.env.R7PLATFORM_WORKER_MAX_QUEUE_LIMIT) : 10
 
 const worker = new Worker(ZONE, tasks, {
   limiter: {
-    max: 50,
+    max: MAX_QUEUE_LIMIT,
     duration: 1000,
   },
   concurrency: CONCURRENCY,
