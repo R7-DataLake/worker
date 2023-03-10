@@ -31,11 +31,11 @@ export default async (job: any) => {
       break
     }
     case 'OPDRUG': {
-      await processModel.importOpdDrug(data)
+      await processModel.importOpDrug(data)
       break
     }
-    case 'IPDDRUG': {
-      await processModel.importIpdDrug(data)
+    case 'IPDRUG': {
+      await processModel.importIpDrug(data)
       break
     }
     case 'DRUGALLERGY': {

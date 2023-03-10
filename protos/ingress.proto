@@ -14,8 +14,8 @@ service IngressService {
   rpc SaveIpd (IpdRequest) returns (MessageReply) {}
   rpc SaveIpdx (IpdxRequest) returns (MessageReply) {}
   rpc SaveIpop (IpopRequest) returns (MessageReply) {}
-  rpc SaveOpdDrug (OpdDrugRequest) returns (MessageReply) {}
-  rpc SaveIpdDrug (IpdDrugRequest) returns (MessageReply) {}
+  rpc SaveOpDrug (OpDrugRequest) returns (MessageReply) {}
+  rpc SaveIpDrug (IpDrugRequest) returns (MessageReply) {}
   rpc SaveLab (LabRequest) returns (MessageReply) {}
   rpc SaveAppoint (AppointRequest) returns (MessageReply) {}
   rpc SaveDrugallergy (DrugallergyRequest) returns (MessageReply) {}
@@ -182,7 +182,7 @@ message IpopRequest {
   repeated Data data = 2;
 }
 
-message OpdDrugRequest {
+message OpDrugRequest {
 
   message Data {
     string hospcode = 1;
@@ -202,7 +202,7 @@ message OpdDrugRequest {
   repeated Data data = 2;
 }
 
-message IpdDrugRequest {
+message IpDrugRequest {
 
   message Data {
     string hospcode = 1;

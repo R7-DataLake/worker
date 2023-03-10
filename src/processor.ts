@@ -58,16 +58,16 @@ export class ProcessModel {
     return grpcModel.doImportIpop(json, jwtMetadata)
   }
 
-  async importOpdDrug(jobs: any) {
+  async importOpDrug(jobs: any) {
     const data = jobs.data
     const json: any = { data }
-    return grpcModel.doImportOpdDrug(json, jwtMetadata)
+    return grpcModel.doImportOpDrug(json, jwtMetadata)
   }
 
-  async importIpdDrug(jobs: any) {
+  async importIpDrug(jobs: any) {
     const data = jobs.data
     const json: any = { data }
-    return grpcModel.doImportIpdDrug(json, jwtMetadata)
+    return grpcModel.doImportIpDrug(json, jwtMetadata)
   }
 
   async importLab(jobs: any) {
