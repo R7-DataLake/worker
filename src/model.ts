@@ -96,9 +96,9 @@ export class GRPCModel {
     })
   }
 
-  async doImportOpdDrug(data: any, jwtMetadata: any): Promise<any> {
+  async doImportOpDrug(data: any, jwtMetadata: any): Promise<any> {
     return new Promise((resolve: any, reject: any) => {
-      client.saveOpdDrug(data, jwtMetadata, (err: any, response: any) => {
+      client.saveOpDrug(data, jwtMetadata, (err: any, response: any) => {
         if (err) {
           reject(err)
         } else {
@@ -108,9 +108,9 @@ export class GRPCModel {
     })
   }
 
-  async doImportIpdDrug(data: any, jwtMetadata: any): Promise<any> {
+  async doImportIpDrug(data: any, jwtMetadata: any): Promise<any> {
     return new Promise((resolve: any, reject: any) => {
-      client.saveIpdDrug(data, jwtMetadata, (err: any, response: any) => {
+      client.saveIpDrug(data, jwtMetadata, (err: any, response: any) => {
         if (err) {
           reject(err)
         } else {

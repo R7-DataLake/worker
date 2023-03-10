@@ -30,8 +30,12 @@ export default async (job: any) => {
       await processModel.importAppoint(data)
       break
     }
-    case 'DRUG': {
-      await processModel.importDrug(data)
+    case 'OPDRUG': {
+      await processModel.importOpDrug(data)
+      break
+    }
+    case 'IPDRUG': {
+      await processModel.importIpDrug(data)
       break
     }
     case 'DRUGALLERGY': {
