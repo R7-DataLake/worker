@@ -14,7 +14,8 @@ service IngressService {
   rpc SaveIpd (IpdRequest) returns (MessageReply) {}
   rpc SaveIpdx (IpdxRequest) returns (MessageReply) {}
   rpc SaveIpop (IpopRequest) returns (MessageReply) {}
-  rpc SaveDrug (DrugRequest) returns (MessageReply) {}
+  rpc SaveOpdDrug (OpdDrugRequest) returns (MessageReply) {}
+  rpc SaveIpdDrug (IpdDrugRequest) returns (MessageReply) {}
   rpc SaveLab (LabRequest) returns (MessageReply) {}
   rpc SaveAppoint (AppointRequest) returns (MessageReply) {}
   rpc SaveDrugallergy (DrugallergyRequest) returns (MessageReply) {}
@@ -181,22 +182,41 @@ message IpopRequest {
   repeated Data data = 2;
 }
 
-message DrugRequest {
+message OpdDrugRequest {
+
+  message Data {
+    string hospcode = 1;
+    string hn = 2;
+    string seq = 3;
+    string did = 4;
+    uint32 amount = 5;
+    float drugprice = 6;
+    float drugcost = 7;
+    string unit = 8;
+    string unitPack = 9;
+    string sigcode = 10;
+    string provider = 11;
+    string dUpdate = 12;
+  }
+
+  repeated Data data = 2;
+}
+
+message IpdDrugRequest {
 
   message Data {
     string hospcode = 1;
     string hn = 2;
     string an = 3;
-    string seq = 4;
-    string did = 5;
-    uint32 amount = 6;
-    float drugprice = 7;
-    float drugcost = 8;
-    string unit = 9;
-    string unitPack = 10;
-    string sigcode = 11;
-    string provider = 12;
-    string dUpdate = 13;
+    string did = 4;
+    uint32 amount = 5;
+    float drugprice = 6;
+    float drugcost = 7;
+    string unit = 8;
+    string unitPack = 9;
+    string sigcode = 10;
+    string provider = 11;
+    string dUpdate = 12;
   }
 
   repeated Data data = 2;
@@ -252,3 +272,4 @@ message DrugallergyRequest {
 
   repeated Data data = 2;
 }
+
