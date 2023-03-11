@@ -1,4 +1,13 @@
-const model = require('./model')
+import { GRPCModel } from "./model"
+
+const grpc = require("@grpc/grpc-js")
+
+const token = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNTE2MjM5MDIyLCJleHAiOjE1MTYyMzkwMjJ9.4Adcj3UFYzPUVaVF43FmMab6RlaQD8A9V8wFzzht-KQ'
+
+const jwtMetadata = new grpc.Metadata()
+jwtMetadata.add("Authorization", `Bearer ${token}`)
+
+const model = new GRPCModel()
 
 const test = async () => {
   const data = {
@@ -47,8 +56,7 @@ const test = async () => {
   }
 
   try {
-    const result = await model.doImportPerson(data)
-
+    const result = await model.doImportPerson(data, jwtMetadata)
     console.log(result)
   } catch (error) {
     console.log(error)

@@ -1,22 +1,28 @@
 syntax = "proto3";
 
-import "google/protobuf/empty.proto";
+// import "google/protobuf/empty.proto";
 
 package ingress;
 
 service IngressService {
-  rpc SavePerson (PersonRequest) returns (google.protobuf.Empty) {}
-  rpc SaveOpd (OpdRequest) returns (google.protobuf.Empty) {}
-  rpc SaveChronic (ChronicRequest) returns (google.protobuf.Empty) {}
-  rpc SaveOpdx (OpdxRequest) returns (google.protobuf.Empty) {}
-  rpc SaveOpop (OpopRequest) returns (google.protobuf.Empty) {}
-  rpc SaveIpd (IpdRequest) returns (google.protobuf.Empty) {}
-  rpc SaveIpdx (IpdxRequest) returns (google.protobuf.Empty) {}
-  rpc SaveIpop (IpopRequest) returns (google.protobuf.Empty) {}
-  rpc SaveDrug (DrugRequest) returns (google.protobuf.Empty) {}
-  rpc SaveLab (LabRequest) returns (google.protobuf.Empty) {}
-  rpc SaveAppoint (AppointRequest) returns (google.protobuf.Empty) {}
-  rpc SaveDrugallergy (DrugallergyRequest) returns (google.protobuf.Empty) {}
+  // rpc SavePerson (PersonRequest) returns (google.protobuf.Empty) {}
+  rpc SavePerson (PersonRequest) returns (MessageReply) {}
+  rpc SaveOpd (OpdRequest) returns (MessageReply) {}
+  rpc SaveChronic (ChronicRequest) returns (MessageReply) {}
+  rpc SaveOpdx (OpdxRequest) returns (MessageReply) {}
+  rpc SaveOpop (OpopRequest) returns (MessageReply) {}
+  rpc SaveIpd (IpdRequest) returns (MessageReply) {}
+  rpc SaveIpdx (IpdxRequest) returns (MessageReply) {}
+  rpc SaveIpop (IpopRequest) returns (MessageReply) {}
+  rpc SaveOpDrug (OpDrugRequest) returns (MessageReply) {}
+  rpc SaveIpDrug (IpDrugRequest) returns (MessageReply) {}
+  rpc SaveLab (LabRequest) returns (MessageReply) {}
+  rpc SaveAppoint (AppointRequest) returns (MessageReply) {}
+  rpc SaveDrugallergy (DrugallergyRequest) returns (MessageReply) {}
+}
+
+message MessageReply {
+  bool ok = 1;
 }
 
 message PersonRequest {
@@ -64,8 +70,8 @@ message OpdRequest {
     string typeout = 14;
     string insType = 15;
     string insNumber = 16;
-    string InsHospmain = 17;
-    string InsHospsub = 18;
+    string insHospmain = 17;
+    string insHospsub = 18;
     string diagText = 19;
     string dUpdate = 20;
   }
@@ -176,22 +182,41 @@ message IpopRequest {
   repeated Data data = 2;
 }
 
-message DrugRequest {
+message OpDrugRequest {
+
+  message Data {
+    string hospcode = 1;
+    string hn = 2;
+    string seq = 3;
+    string did = 4;
+    uint32 amount = 5;
+    float drugprice = 6;
+    float drugcost = 7;
+    string unit = 8;
+    string unitPack = 9;
+    string sigcode = 10;
+    string provider = 11;
+    string dUpdate = 12;
+  }
+
+  repeated Data data = 2;
+}
+
+message IpDrugRequest {
 
   message Data {
     string hospcode = 1;
     string hn = 2;
     string an = 3;
-    string seq = 4;
-    string did = 5;
-    uint32 amount = 6;
-    float drugprice = 7;
-    float drugcost = 8;
-    string unit = 9;
-    string unitPack = 10;
-    string sigcode = 11;
-    string provider = 12;
-    string dUpdate = 13;
+    string did = 4;
+    uint32 amount = 5;
+    float drugprice = 6;
+    float drugcost = 7;
+    string unit = 8;
+    string unitPack = 9;
+    string sigcode = 10;
+    string provider = 11;
+    string dUpdate = 12;
   }
 
   repeated Data data = 2;
@@ -247,3 +272,4 @@ message DrugallergyRequest {
 
   repeated Data data = 2;
 }
+
