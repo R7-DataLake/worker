@@ -9,7 +9,11 @@ const redisWorker = {
     host: process.env.R7PLATFORM_WORKER_REDIS_HOST || "localhost",
     port: Number(process.env.R7PLATFORM_WORKER_REDIS_PORT) || 6379,
     enableOfflineQueue: false,
-    password: process.env.R7PLATFORM_WORKER_REDIS_PASSWORD || ""
+    password: process.env.R7PLATFORM_WORKER_REDIS_PASSWORD || "",
+    retryStrategy(times: any) {
+      const delay = Math.min(times * 50, 2000);
+      return delay;
+    },
   }
 }
 
@@ -18,7 +22,11 @@ const redisLog = {
     host: process.env.R7PLATFORM_WORKER_LOG_REDIS_HOST || "localhost",
     port: Number(process.env.R7PLATFORM_WORKER_LOG_REDIS_PORT) || 6379,
     enableOfflineQueue: false,
-    password: process.env.R7PLATFORM_WORKER_LOG_REDIS_PASSWORD || ""
+    password: process.env.R7PLATFORM_WORKER_LOG_REDIS_PASSWORD || "",
+    retryStrategy(times: any) {
+      const delay = Math.min(times * 50, 2000);
+      return delay;
+    },
   }
 }
 
