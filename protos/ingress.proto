@@ -1,11 +1,11 @@
 syntax = "proto3";
 
-// import "google/protobuf/empty.proto";
+import "google/protobuf/empty.proto";
 
 package ingress;
 
 service IngressService {
-  // rpc SavePerson (PersonRequest) returns (google.protobuf.Empty) {}
+  rpc Test (google.protobuf.Empty) returns (MessageReply) {}
   rpc SavePerson (PersonRequest) returns (MessageReply) {}
   rpc SaveOpd (OpdRequest) returns (MessageReply) {}
   rpc SaveChronic (ChronicRequest) returns (MessageReply) {}
