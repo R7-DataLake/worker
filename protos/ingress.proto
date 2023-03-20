@@ -66,14 +66,16 @@ message OpdRequest {
     uint32 dbp = 10;
     uint32 pr = 11;
     uint32 rr = 12;
-    string typein = 13;
-    string typeout = 14;
-    string insType = 15;
-    string insNumber = 16;
-    string insHospmain = 17;
-    string insHospsub = 18;
-    string diagText = 19;
-    string dUpdate = 20;
+    uint32 height = 13;
+    float weight = 14;
+    string typein = 15;
+    string typeout = 16;
+    string insType = 17;
+    string insNumber = 18;
+    string insHospmain = 19;
+    string insHospsub = 20;
+    string diagText = 21;
+    string dUpdate = 22;
   }
 
   repeated Data data = 2;
