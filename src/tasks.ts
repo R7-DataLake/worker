@@ -7,55 +7,55 @@ export default async (job: any) => {
   // console.log(job);
   switch (job.name) {
     case 'PERSON': {
-      processModel.importPerson(data)
+      await processModel.importPerson(data)
       break
     }
     case 'OPD': {
-      processModel.importOpd(data)
+      await processModel.importOpd(data)
       break
     }
     case 'CHRONIC': {
-      processModel.importChronic(data)
+      await processModel.importChronic(data)
       break
     }
     case 'OPDX': {
-      processModel.importOpdx(data)
+      await processModel.importOpdx(data)
       break
     }
     case 'OPOP': {
-      processModel.importOpop(data)
+      await processModel.importOpop(data)
       break
     }
     case 'APPOINT': {
-      processModel.importAppoint(data)
+      await processModel.importAppoint(data)
       break
     }
     case 'OPDRUG': {
-      processModel.importOpDrug(data)
+      await processModel.importOpDrug(data)
       break
     }
     case 'IPDRUG': {
-      processModel.importIpDrug(data)
+      await processModel.importIpDrug(data)
       break
     }
     case 'DRUGALLERGY': {
-      processModel.importDrugallergy(data)
+      await processModel.importDrugallergy(data)
       break
     }
     case 'IPD': {
-      processModel.importIpd(data)
+      await processModel.importIpd(data)
       break
     }
     case 'IPDX': {
-      processModel.importIpdx(data)
+      await processModel.importIpdx(data)
       break
     }
     case 'IPOP': {
-      processModel.importIpop(data)
+      await processModel.importIpop(data)
       break
     }
     case 'LAB': {
-      processModel.importLab(data)
+      await processModel.importLab(data)
       break
     }
   }
