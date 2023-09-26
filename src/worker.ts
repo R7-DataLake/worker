@@ -51,7 +51,7 @@ const worker = new Worker(ZONE, tasks, {
     duration: 1000,
   },
   maxStalledCount: 6,
-  stalledInterval: 30000,
+  stalledInterval: 3000,
   concurrency: CONCURRENCY,
   connection: redisWorker.connection,
 })
@@ -80,7 +80,7 @@ const logQueue = new Queue("LOG", {
 
   connection: redisLog.connection,
   defaultJobOptions: {
-    delay: 30000,
+    delay: 3000,
     attempts: 5,
     backoff: {
       type: 'exponential',
